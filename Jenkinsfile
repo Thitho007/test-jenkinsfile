@@ -10,14 +10,14 @@ pipeline {
       stage('Example') {
          steps {
             script {
-               def json = '''{
+               my_json = '''{
   "booleanParam": "${params.boolParam}",
   "StringParam": "${params.StringParam}",
   "ChoiceParam": "${params.ChoiceParam}"
 }'''
             }
             echo 'Hello World'
-            writeFile file: 'output.json', text: json
+            writeFile file: 'output.json', text: my_json
             //def json_obj = readJSON text: json
             //writeJSON file: 'output.json', json: json_obj
          }
