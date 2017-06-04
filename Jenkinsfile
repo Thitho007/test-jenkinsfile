@@ -28,7 +28,8 @@ pipeline {
             echo "StringParam=${params.StringParam}"
             echo "ChoiceParam=${params.ChoiceParam}"
             sh 'env'
-            readJSON file: 'output.json'
+            //json_obj = parseConfig(readJSON(file: 'output.json'))
+            sh 'cat output.json'
          }
       }
    }
