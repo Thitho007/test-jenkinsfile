@@ -8,12 +8,10 @@ pipeline {
     }
     stage('Print parameters value') {
       steps {
-        sh '''
-   echo booleanParam=${params.boolParam}
-   echo StringParam=${params.ChoiceParam}
-   echo ChoiceParam=${params.ChoiceParam}
-   env
-'''
+         echo 'booleanParam=${params.boolParam}'
+         echo 'StringParam=${params.ChoiceParam}'
+         echo 'ChoiceParam=${params.ChoiceParam}'
+         echo 'env''
       }
     }
   }
@@ -25,9 +23,8 @@ pipeline {
     
   }
   parameters {
-    booleanParam(defaultValue: true, description: '', name: 'boolParam')
-    string(defaultValue: 'TEST', description: 'What environment?', name: 'StringParam')
-    choice(choices: '''Choice 1
-Second Choice''', description: 'Which Choice ?', name: 'ChoiceParam')
+      booleanParam(defaultValue: true, description: '', name: 'boolParam')
+      string(defaultValue: 'TEST', description: 'What environment?', name: 'StringParam')
+      choice(choices: 'Choice 1\nSecond Choice', description: 'Which Choice ?', name: 'ChoiceParam')
   }
 }
