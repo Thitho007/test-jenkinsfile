@@ -1,3 +1,11 @@
+//import groovy.json.JsonSlurper
+def json = '''{
+  "booleanParam": "${params.boolParam}",
+  "StringParam": "${params.StringParam}",
+  "ChoiceParam": "${params.ChoiceParam}"
+}'''
+//def slurped = new JsonSlurper().parseText(json)
+   
 pipeline {
    agent any
    parameters {
@@ -5,15 +13,7 @@ pipeline {
       string(defaultValue: 'TEST', description: 'What environment?', name: 'StringParam')
       choice(choices: 'Choice 1\nSecond Choice', description: 'Which Choice ?', name: 'ChoiceParam')
    }
-   //import groovy.json.JsonSlurper
 
-   def json = '''{
-  "booleanParam": "${params.boolParam}",
-  "StringParam": "${params.StringParam}",
-  "ChoiceParam": "${params.ChoiceParam}"
-}'''
-   //def slurped = new JsonSlurper().parseText(json)
-   
    stages {
       stage('Example') {
          steps {
