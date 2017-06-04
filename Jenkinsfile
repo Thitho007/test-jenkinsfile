@@ -8,8 +8,7 @@ pipeline {
     }
     stage('Print parameters value') {
       steps {
-        sh 
-'''
+        sh '''
    echo booleanParam=${params.boolParam}
    echo StringParam=${params.ChoiceParam}
    echo ChoiceParam=${params.ChoiceParam}
