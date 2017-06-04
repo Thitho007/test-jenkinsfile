@@ -19,7 +19,7 @@ pipeline {
               echo StringParam=${params.ChoiceParam}
               echo ChoiceParam=${params.ChoiceParam}
               env
-              "
+              """
            }
         }
     }
