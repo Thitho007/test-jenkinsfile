@@ -11,7 +11,7 @@ pipeline {
          echo 'booleanParam=${params.boolParam}'
          echo 'StringParam=${params.ChoiceParam}'
          echo 'ChoiceParam=${params.ChoiceParam}'
-         echo 'env''
+         sh 'env'
       }
     }
   }
