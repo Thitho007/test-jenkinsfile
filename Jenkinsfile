@@ -15,9 +15,9 @@ pipeline {
   "StringParam": "${params.StringParam}",
   "ChoiceParam": "${params.ChoiceParam}"
 }'''
-               def json_obj = readJSON text: json
             }
             echo 'Hello World'
+            def json_obj = readJSON text: json
             writeJSON file: 'output.json', json: json_obj
          }
       }
