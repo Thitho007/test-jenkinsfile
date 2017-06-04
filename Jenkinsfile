@@ -5,20 +5,21 @@ pipeline {
       string(defaultValue: 'TEST', description: 'What environment?', name: 'StringParam')
       choice(choices: 'Choice 1\nSecond Choice', description: 'Which Choice ?', name: 'ChoiceParam')
    }
-   import groovy.json.JsonSlurper
+   //import groovy.json.JsonSlurper
 
    def json = '''{
   "booleanParam": "${params.boolParam}",
   "StringParam": "${params.StringParam}",
   "ChoiceParam": "${params.ChoiceParam}"
 }'''
-   def slurped = new JsonSlurper().parseText(json)
+   //def slurped = new JsonSlurper().parseText(json)
    
    stages {
       stage('Example') {
          steps {
             echo 'Hello World'
-            writeJSON file: 'output.json', json: slurped
+            def json_obj = readJSON text: json
+            writeJSON file: 'output.json', json: json_obj
          }
       }
       stage('Print parameters value') {
@@ -27,7 +28,7 @@ pipeline {
             echo "StringParam=${params.StringParam}"
             echo "ChoiceParam=${params.ChoiceParam}"
             sh 'env'
-            readJSON text: json
+            readJSON file: 'output.json'
          }
       }
    }
