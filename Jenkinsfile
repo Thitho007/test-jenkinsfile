@@ -1,11 +1,3 @@
-//import groovy.json.JsonSlurper
-def json = '''{
-  "booleanParam": "${params.boolParam}",
-  "StringParam": "${params.StringParam}",
-  "ChoiceParam": "${params.ChoiceParam}"
-}'''
-//def slurped = new JsonSlurper().parseText(json)
-   
 pipeline {
    agent any
    parameters {
@@ -17,6 +9,13 @@ pipeline {
    stages {
       stage('Example') {
          steps {
+            script {
+               def json = '''{
+  "booleanParam": "${params.boolParam}",
+  "StringParam": "${params.StringParam}",
+  "ChoiceParam": "${params.ChoiceParam}"
+}'''
+            }
             echo 'Hello World'
             def json_obj = readJSON text: json
             writeJSON file: 'output.json', json: json_obj
