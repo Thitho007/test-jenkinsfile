@@ -30,8 +30,10 @@ pipeline {
       }
    }
    post {
-      always {
-         echo 'I will always say Hello again!'
+      success {
+         echo "json_obj.booleanParam = ${json_obj.booleanParam}"
+         echo "json_obj.StringParam = ${json_obj.StringParam}"
+         echo "json_obj.ChoiceParam = ${echo "json_obj.ChoiceParam}"
       }
    }
 }
