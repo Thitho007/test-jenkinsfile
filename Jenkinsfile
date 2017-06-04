@@ -22,10 +22,9 @@ pipeline {
       stage('Get Content of file') {
          steps {
             sh 'env'
-            
-            script {
-              json_obj = parseConfig(readJSON(file: 'output.json'))
-            }
+            //script {
+            json_obj = readJSON file: 'output.json'
+            //}
             sh 'cat output.json'
          }
       }
