@@ -14,7 +14,7 @@ pipeline {
       stage('Print parameters value') {
          steps {
             echo "booleanParam=${params.boolParam}"
-            echo "StringParam=${params.ChoiceParam}"
+            echo "StringParam=${params.StringParam}"
             echo "ChoiceParam=${params.ChoiceParam}"
             sh 'env'
          }
