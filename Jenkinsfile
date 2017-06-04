@@ -10,11 +10,11 @@ pipeline {
       stage('Example') {
          steps {
             script {
-               my_json = '''{
-  "booleanParam": "${params.boolParam}",
-  "StringParam": "${params.StringParam}",
-  "ChoiceParam": "${params.ChoiceParam}"
-}'''
+               my_json = """{
+  \"booleanParam\": \"${params.boolParam}\",
+  \"StringParam\": \"${params.StringParam}\",
+  \"ChoiceParam\": \"${params.ChoiceParam}\"
+}"""
             }
             echo 'Hello World'
             writeFile file: 'output.json', text: my_json
