@@ -7,7 +7,7 @@ pipeline {
    }
 
    stages {
-      stage('Example') {
+      stage('Set Content of file & Write it') {
          steps {
             script {
                my_json = """{
@@ -16,19 +16,16 @@ pipeline {
   \"ChoiceParam\": \"${params.ChoiceParam}\"
 }"""
             }
-            echo 'Hello World'
             writeFile file: 'output.json', text: my_json
-            //def json_obj = readJSON text: json
-            //writeJSON file: 'output.json', json: json_obj
          }
       }
-      stage('Print parameters value') {
+      stage('Get Content of file') {
          steps {
-            echo "booleanParam=${params.boolParam}"
-            echo "StringParam=${params.StringParam}"
-            echo "ChoiceParam=${params.ChoiceParam}"
             sh 'env'
-            //json_obj = parseConfig(readJSON(file: 'output.json'))
+            
+            script {
+              json_obj = parseConfig(readJSON(file: 'output.json'))
+            }
             sh 'cat output.json'
          }
       }
