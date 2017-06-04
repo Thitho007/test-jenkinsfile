@@ -17,8 +17,9 @@ pipeline {
 }'''
             }
             echo 'Hello World'
-            def json_obj = readJSON text: json
-            writeJSON file: 'output.json', json: json_obj
+            writeFile file: 'output.json', text: json
+            //def json_obj = readJSON text: json
+            //writeJSON file: 'output.json', json: json_obj
          }
       }
       stage('Print parameters value') {
