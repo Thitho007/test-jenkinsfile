@@ -28,6 +28,17 @@ pipeline {
             sh 'cat output.json'
          }
       }
+      stage('Modify the values') {
+         steps {
+            script {
+               json_obj.booleanParam = false
+               json_obj.StringParam = "Changed in script"
+               json_obj.ChoiceParam = "Second Choice"
+            }
+            writeJSON file: 'output.json', json: json_obj
+            sh 'cat output.json'
+         }
+      }
    }
    post {
       success {
