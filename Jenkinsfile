@@ -34,6 +34,7 @@ pipeline {
                json_obj.booleanParam = false
                json_obj.StringParam = "Changed in script"
                json_obj.ChoiceParam = "Second Choice"
+               json_obj.put("MyNewParam","Added value")
             }
             writeJSON file: 'output.json', json: json_obj
             sh 'cat output.json'
@@ -45,6 +46,7 @@ pipeline {
          echo "json_obj.booleanParam = ${json_obj.booleanParam}"
          echo "json_obj.StringParam = ${json_obj.StringParam}"
          echo "json_obj.ChoiceParam = ${json_obj.ChoiceParam}"
+         echo "json_obj.MyNewParam = ${json_obj.MyNewParam}"
       }
    }
 }
